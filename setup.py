@@ -52,7 +52,6 @@ setup(
     install_requires=open(REQUIREMENTS_FILE_PATH).read().split("\n") if REQUIREMENTS_FILE_PATH else [],
     keywords=KEYWORDS,
     classifiers=[
-        f"Github :: {URL}",
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
