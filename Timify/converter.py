@@ -1,5 +1,5 @@
 class TimeConverter(object):
-    def __init__(self, seconds: int = 0, minutes: int = 0, hours: int = 0, days: int = 0, months: int = 0,
+    def __init__(self, millisecond: int = 0, seconds: int = 0, minutes: int = 0, hours: int = 0, days: int = 0, months: int = 0,
                  years: int = 0):
 
         self.seconds = seconds
@@ -8,14 +8,16 @@ class TimeConverter(object):
         self.days = days
         self.months = months
         self.years = years
+        self.millisecond = millisecond
 
     def to_seconds(self) -> float:
         """
-        Formulas: year to seconds     : (value * 3.154e+7)
-                  months to seconds   : (value * 2.628e+6)
-                  days to seconds     : (value * 86400)
-                  hours to seconds    : (value * 3600)
-                  minutes to seconds  : (value * 60)
+        Formulas: year to seconds           : (value * 3.154e+7)
+                  months to seconds         : (value * 2.628e+6)
+                  days to seconds           : (value * 86400)
+                  hours to seconds          : (value * 3600)
+                  minutes to seconds        : (value * 60)
+                  milliseconds to seconds   : (value / 1000)
         """
 
         total_seconds = sum([
@@ -24,10 +26,14 @@ class TimeConverter(object):
             (self.days * 86400),
             (self.hours * 3600),
             (self.minutes * 60),
-            self.seconds
+            self.seconds,
+            (self.millisecond / 1000)
         ])
 
         return total_seconds
+
+    def to_milliseconds(self) -> float:
+        return self.to_seconds() * 1000
 
     def to_minutes(self) -> float:
         return self.to_seconds() / 60

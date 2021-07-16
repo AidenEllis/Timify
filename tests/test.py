@@ -8,6 +8,10 @@ class Test(unittest.TestCase):
         result = TimeConverter(seconds=10, minutes=1, hours=1).to_seconds()
         self.assertEqual(result, 3670.0)
 
+    def test_to_milliseconds(self):
+        result = TimeConverter(seconds=10).to_milliseconds()
+        self.assertEqual(result, 10000.0)
+
     def test_to_minutes(self):
         result = TimeConverter(seconds=90, minutes=14, hours=3, days=23).to_minutes()
         self.assertEqual(result, 33315.5)
